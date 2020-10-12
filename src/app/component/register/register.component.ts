@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{ FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
+import{ FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
 import {RegisterService} from '../../services/user/register.service';
 import {Router} from '@angular/router';
 import {DialogComponent} from '../dialog/dialog.component';

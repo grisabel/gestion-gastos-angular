@@ -1,17 +1,17 @@
 <header class="header"></header>
 <section class="home">
   <p class="title">Gestiona tus gastos</p>
-  <form class="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]='form' class="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="form-field" >
-      <input matInput [type]='email'  name="email" placeholder="Correo Electrónico" style="color: black;"  [(ngModel)]="email" required>
+      <input matInput [type]='email'  name="email" placeholder="Correo Electrónico" style="color: black;"  required formControlName='email'>
       </mat-form-field>
     <mat-form-field class="form-field">
-      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" required>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" required formControlName='password'>
       <button  class="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
     </mat-form-field>
-    <input class="button-login" type="submit" value="Entrar" [disabled]="!validateEmail(this.email)">
+    <input class="button-login" type="submit" value="Entrar"  [disabled]='form.invalid'>
   </form>
   <div class="register">
     <p>¿No tienes una cuenta? <a [routerLink]="'/register'" >Regístrate</a></p>
