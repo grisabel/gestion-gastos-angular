@@ -1,26 +1,2 @@
-<header class="header"></header>
-<section class="home">
-  <p class="title">Gestiona tus gastos</p>
-  <form class="form">
-    <mat-form-field class="form-field" >
-      <input matInput [type]='email'  name="email" placeholder="Correo Electrónico" style="color: black;">
-      <mat-error *ngIf="this.validateEmail(this.email.value)">
-        Por favor, introduzca un email válido
-      </mat-error>
-      <mat-error *ngIf="this.email.value!=''">
-        El correo electrónico es <strong>obligatorio</strong>
-      </mat-error>
-      </mat-form-field>
-    <mat-form-field class="form-field">
-      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña">
-      <button  class="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-    </mat-form-field>
-    <input class="button-login" type="submit" value="Entrar">
-  </form>
-  <div class="register">
-    <p>¿No tienes una cuenta? <a>Regístrate</a></p>
-  </div>
-</section>
-<footer class="footer"></footer>
+<router-outlet></router-outlet> 
+
