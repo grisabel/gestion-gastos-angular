@@ -1,0 +1,114 @@
+<body>
+    <header>
+        <h1>Administra tus ahorros</h1>
+        <nav>
+            <button class="buttonNav" mat-icon-button [matMenuTriggerFor]="menu" >
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" class='menu-but'>
+                <button mat-menu-item [routerLink]="'/week'">
+                    <mat-icon>looks_one</mat-icon>
+                    <span>Informe Semanal</span>
+                </button>
+                <button mat-menu-item [routerLink]="'/month'">
+                    <mat-icon>looks_two</mat-icon>
+                    <span>Informe Mensual</span>
+                </button>
+                <button mat-menu-item [routerLink]="'/year'">
+                    <mat-icon>looks_3</mat-icon>
+                    <span>Informe Anual</span>
+                </button>
+                <button mat-menu-item (click)='logOut()'>
+                    <mat-icon>notifications_off</mat-icon>
+                    <span>Cerrar Sesión</span>
+                </button>
+            </mat-menu>
+    
+        </nav>
+    </header>
+    <section class="container-main">
+
+        
+        <h2>Añadir Ingreso</h2>
+        <form [formGroup]="deposit" class="form">
+            <mat-form-field >
+                <mat-label>Concepto</mat-label>
+                <mat-select  formControlName="capacity" required>
+                    <mat-option value="Nómina">Nómina</mat-option>
+                    <mat-option value="Rentas y alquileres">Rentas y alquileres</mat-option>
+                    <mat-option value="Ingresos Extraordinarios">Ingresos Extraordinarios</mat-option>
+                    <mat-option value="Apuestas y Juegos">Apuestas y Juegos</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field  >
+                <mat-label>Ingreso</mat-label>
+                <input matInput type='number' formControlName="deposit" required>
+                <span matSuffix>€</span>         
+            </mat-form-field>
+    
+            
+            <mat-form-field appearance="standard">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+         
+    
+            <mat-form-field  >
+                <mat-label>Comentario</mat-label>
+                <textarea matInput formControlName="comment" placeholder="Lóngitud máxima:40"></textarea>
+            </mat-form-field>
+    
+            <button mat-button class="button" [disabled]="deposit.invalid" (click)="aniadirIngreso()">Añadir</button>
+        </form>
+    
+        <h2>Añadir Gasto</h2>
+        <form [formGroup]="spend" class="form">
+            <mat-form-field >
+                <mat-label>Concepto</mat-label>
+                <mat-select  formControlName="capacity" required>
+                    <mat-option value="Hipoteca/Alquiler">Hipoteca/Alquiler</mat-option>
+                    <mat-option value="Muebles/Menaje">Muebles/Menaje</mat-option>
+                    <mat-option value="Alimentación">Alimentación </mat-option>
+                    <mat-option value="Mascotas">Mascotas</mat-option>
+                    <mat-option value="Compras/Ropa/Estética">Compras/Ropa/Estética</mat-option>
+                    <mat-option value="Móvil/Internet/Fijo">Móvil/Internet/Fijo</mat-option>
+                    <mat-option value="Luz/Gas">Luz/Gas</mat-option>
+                    <mat-option value="Agua">Agua</mat-option>
+                    <mat-option value="Carburantes">Carburantes</mat-option>
+                    <mat-option value="Coche">Coche</mat-option>
+                    <mat-option value="Seguros">Seguros</mat-option>
+                    <mat-option value="Impuestos/Tasas/Multas">Impuestos/Tasas/Multas</mat-option>
+                    <mat-option value="Matrícrulas/Cuotas">Matrícrulas/Cuotas</mat-option>
+                    <mat-option value="Ocio">Ocio</mat-option>
+                    <mat-option value="Gastos Extraordinarios">Gastos Extraordinarios</mat-option>
+                    <mat-option value="Apuestas y juegos">Apuestas y juegos</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field  >
+                <mat-label>Gasto</mat-label>
+                <input matInput type='number' formControlName="spend" required>
+                <span matSuffix>€</span>         
+            </mat-form-field>
+    
+            
+            <mat-form-field appearance="standard">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+         
+    
+            <mat-form-field  >
+                <mat-label>Comentario</mat-label>
+                <textarea matInput formControlName="comment" placeholder="Lóngitud máxima:40"></textarea>
+            </mat-form-field>
+    
+            <button mat-button class="button" [disabled]='spend.invalid' (click)="aniadirGasto()">Añadir</button>
+        </form>
+    </section>
+</body>

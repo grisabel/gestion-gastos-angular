@@ -17,10 +17,9 @@
     margin-top: 10vh;
 
 }
-.button{
-      background-color:  rgb(214, 214, 214);
-      border: none;
-  }
+.icon{
+    padding: 1.5vh;
+}
 .form{
     display: flex;
     flex-wrap: wrap;

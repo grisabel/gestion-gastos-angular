@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 import {LoginService} from '../../services/user/login.service';
 import {AuthenticateService, TokenResponse} from '../../services/user/authenticate.service';
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     private _authenticate: AuthenticateService,
     private _generalServices: GeneralService,
     private _fb: FormBuilder,
+    private _route: Router,
     public  dialog : MatDialog
   ){
     this.user = new User("","","","",null);
@@ -49,25 +51,25 @@ export class LoginComponent implements OnInit {
      (response:any)  =>{
        this.identity = JSON.stringify(response.userS);
        sessionStorage.setItem('identity', this.identity)
-       //this._route.navigateByUrl('')
+       this._route.navigateByUrl('management')
 
      },
      error => {
        if(error.status === 404){
         
-         let dialogRef =  this.dialog.open(DialogComponent, {
+          this.dialog.open(DialogComponent, {
            width: '70%',
            data: {message: 'El correo electrónico no está registrado', title: 'Error!' }
          });
        }
        else if(error.status === 501){
-        let dialogRef =  this.dialog.open(DialogComponent, {
+          this.dialog.open(DialogComponent, {
           width: '70%',
           data: {message: 'El correo electrónico y la contraseña no se corresponden.', title: 'Error!' }
         });
        }
        else{
-        let dialogRef =  this.dialog.open(DialogComponent, {
+          this.dialog.open(DialogComponent, {
           width: '70%',
           data: {message: 'Error en el servidor', title: 'Error!' }
         });
@@ -75,11 +77,14 @@ export class LoginComponent implements OnInit {
        
      });
  }
- createForm(){
+ public createForm(){
   this.form = this._fb.group({
-    email: ['', Validators.email],
+    email: ['', [Validators.required, Validators.email]],
     password:['', Validators.required]
   });
+ }
+ public handlerhide(){
+   this.hide = !this.hide;
  }
 
 }

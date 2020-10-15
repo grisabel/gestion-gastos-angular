@@ -7,7 +7,10 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
               MatButtonModule,
               ReactiveFormsModule,
               MatDialogModule,
-              MatSnackBarModule],
+              MatSelectModule,
+              MatDatepickerModule,
+              MatNativeDateModule,
+              MatMenuModule],
     exports: [MatSliderModule,
               MatFormFieldModule,
               MatInputModule,
@@ -28,6 +34,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
               MatButtonModule,
               ReactiveFormsModule,
               MatDialogModule,
-              MatSnackBarModule]
+              MatSelectModule,
+              MatDatepickerModule,
+              MatNativeDateModule,
+              MatMenuModule]
 })
 export class MaterialModule { }

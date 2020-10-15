@@ -1,8 +1,11 @@
 <body>
-  <header>
+
+ <header>
     <h1>Formulario</h1>
  </header>
+
  <section>
+
         <form [formGroup]="user" class="form">
             <mat-form-field appearance="standard" class="form-field">
                 <mat-label>Nombre</mat-label>
@@ -33,13 +36,9 @@
               </mat-form-field>
               <mat-error style="font-size: small;" *ngIf="!validatePasswords()">Las contraseñas no coinciden</mat-error>     
         </form>
+
         <div class="butt">
           <button mat-button [disabled]='user.invalid' [ngStyle]="{'background':'rgb(134, 193, 232)'}" (click)='handlerSend()'>Enviar </button>
         </div>
-        
-
-       
-       
- </section>    
- <footer></footer>
+  </section>    
 </body>

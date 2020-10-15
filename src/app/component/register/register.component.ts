@@ -71,18 +71,18 @@ export class RegisterComponent implements OnInit {
  
     this._registerService.register(this.user.value).subscribe(
       response=>{
-         let dialogRef =  this.dialog.open(DialogComponent, {
-           width: '70%',
+         this.dialog.open(DialogComponent, {
+          width: '70%',
           data: {message:'El usuario se ha registrado correctamente', title:""}
              
          });
          
-            /* this._route.navigateByUrl('pagina-principal')*/
+         this._route.navigateByUrl('management')
            
         
         },
         error=>{
-            let dialogRef =  this.dialog.open(DialogComponent, {
+            this.dialog.open(DialogComponent, {
              width: '70%',
              data: {message:'El email ya está registrado', title:'Error!'}
            });

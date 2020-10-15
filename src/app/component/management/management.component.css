@@ -1,0 +1,48 @@
+body{
+    background-color: rgb(219, 239, 252);
+}
+
+h1{
+    font-size: 8vw;
+    background-color: rgb(173, 222, 255);
+    padding: 6vw;
+    text-align: center;
+    margin-block-end:0px;
+}
+nav{
+    display: flex;
+    justify-content: flex-end;
+    background-color:rgb(143, 205, 247);
+    margin-bottom: 2vh; 
+}
+.buttonNav{
+    margin-right: 2vh;;
+}
+section{
+    background-color: rgb(219, 239, 252);
+}
+.menu-but{
+    
+    background-color: lightgreen;
+}
+.container-main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+}
+.form{
+    width: 70%;
+    padding: 5vw;
+    border: 0.5vh solid gray;
+    border-radius: 1vh;
+    background-color: ivory;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10vw;
+}
+.button{
+    background-color: rgb(201, 201, 201);
+}
