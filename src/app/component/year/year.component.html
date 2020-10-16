@@ -1,4 +1,95 @@
-<header>
-    <h1>Informe Anual</h1>
-</header>
-
+<!-- <body>
+    <header>
+        <h1>Informe Anual</h1>
+    </header>
+    
+    <section>
+        <div class="container-main">
+            <form [formGroup]="form" class="form">
+                  <mat-form-field >
+                    <mat-label>Selecciona un año</mat-label>
+                    <mat-select formControlName="year" required>
+                      <mat-option value="2020">2020</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="container-button"> 
+                    <button mat-button class="button" [disabled]='form.invalid' (click)='submit()'>Buscar</button>
+                  </div>
+                 
+            </form>
+            <div class="container-savings">
+                <div class="saving_item">
+                    <p>Ingresos</p>
+                <div class="item_con">
+                    <p>{{totalDeposit}}<span matSuffix>€</span> </p>
+                   
+                </div>
+                </div>
+                <div class="saving_item">
+                    <p>Gastos</p>
+               <div class="item_con">
+                    <p>{{totalSpend}} <span matSuffix>€</span> </p>
+                    
+               </div>
+                </div>
+                <div class="saving_item">
+                    <p>Beneficios</p>
+                <div class="item_con" *ngIf="(totalDeposit-totalSpend)>0" style="background-color: SeaGreen;">
+                    <p>{{totalDeposit-totalSpend}} <span matSuffix>€</span></p>    
+                </div>
+                <div class="item_con" *ngIf="(totalDeposit-totalSpend)===0" style="background-color: rgb(143, 205, 247);">
+                    <p>{{totalDeposit-totalSpend}} <span matSuffix>€</span></p>    
+                </div>
+                <div class="item_con" *ngIf="(totalDeposit-totalSpend)<0" style="background-color: FireBrick;">
+                    <p>{{totalDeposit-totalSpend}} <span matSuffix>€</span></p>    
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-tables">
+            <div class="container-deposit">
+                <table class="tabla" *ngIf="responseDeposit.length>0">
+                    <caption>Ingresos</caption>
+                    <thead>
+                       <tr>
+                           <th class="tablaTH" data-campo="concepto">Concepto</th>
+                           <th class="tablaTH" data-campo="ingreso">Ingreso(€)</th>
+                           <th class="tablaTH" data-campo="fecha">Fecha</th>
+                           <th class="tablaTH" data-campo="comentario">Comentario</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let deposit of this.responseDeposit">
+                            <td class="tablaTD" data-campo="concepto">{{deposit.capacity}}</td>
+                            <td class="tablaTD" data-campo="ingreso">{{deposit.deposit}}€</td>
+                            <td class="tablaTD" data-campo="fecha">{{deposit.date.substring(0,10)}}</td>
+                            <td class="tablaTD" data-campo="comentario">{{deposit.comment}}</td>
+                        </tr>
+                    </tbody>
+                </table>    
+            </div>
+            <div class="container-spend">
+                <table class="tabla" *ngIf="responseSpend.length>0">
+                    <caption>Gastos</caption>
+                    <thead>
+                       <tr>
+                           <th class="tablaTH" data-campo="concepto">Concepto</th>
+                           <th class="tablaTH" data-campo="ingreso">Gasto(€)</th>
+                           <th class="tablaTH" data-campo="fecha">Fecha</th>
+                           <th class="tablaTH" data-campo="comentario">Comentario</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let spend of this.responseSpend">
+                            <td class="tablaTD" data-campo="concepto">{{spend.capacity}}</td>
+                            <td class="tablaTD" data-campo="ingreso">{{spend.spend}}€</td>
+                            <td class="tablaTD" data-campo="fecha">{{spend.date.substring(0,10)}}</td>
+                            <td class="tablaTD" data-campo="comentario">{{spend.comment}}</td>
+                        </tr>
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+    </section>
+</body>
+ -->
