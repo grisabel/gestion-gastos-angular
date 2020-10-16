@@ -46,14 +46,13 @@ export class ManagementComponent implements OnInit {
       ); 
   }
   public aniadirGasto(){
-
      this._gastoServices.addSpend(this.spend.value).subscribe(
         (response:any)=>{
           this.dialog.open(DialogComponent, {
             width: '70%',
             data: {message: 'El gasto se ha añadido correctamente', title: '' }
           });
-                this.spend.reset()
+         
                
         },
         error=>{
