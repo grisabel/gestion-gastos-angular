@@ -2,12 +2,13 @@ body{
     background-color: rgb(227, 246, 249);
 }
 h1{
-    font-size: 8vw;
+    font-size: 2.5em;
     font-weight: 500;
     background-color:  rgb(143, 205, 247);
-    padding: 6vw;
+    padding: 32px;
     text-align: center;
     margin-block-end:0px;
+    line-height: 100%;
 }
 section{
     display: flex;
@@ -19,11 +20,11 @@ section{
   
 }
 .form{
-    border: 0.5vh solid gray;
-    margin-top: 3vh;
+    border: 2.5px solid gray;
+    margin-top: 16px;
     width: min-content;
-    padding:2vh;
-    margin-left: 3vh;
+    padding:16px;
+  
 
 }
 .container-button{
@@ -41,64 +42,94 @@ section{
     justify-content: center;
 }
 .container-savings{
-    border: 0.5vh solid gray;
-    margin-top: 3vh;
-    margin-left:3vh;
-    margin-right: 3vh;
-    padding:2vh;
-    flex-grow: 1;
+    border: 2.5px solid gray;
+    margin:16px;
+    padding: 16px;
+    /* flex-grow: 1; */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
   
 }
 .saving_item{
-    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 8px;
 
 } 
 .saving_item p{
+    margin: 16px;
     text-align: center;
-    margin: 2vh;
 }
 .item_con{
-    border: 0.2vh solid gray;
+    border: 0.5px solid gray;
+    margin-bottom: 16px;
 }
 .container-tables{
-    margin-top: 3vh;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 95%;
+    width: 90%;
+}
+.container-deposit{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.container-spend{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .tabla{
-    margin-left: 2vh;
-    margin-right: 2vh;
+    margin-left: 16px;
+    margin-right: 16px;
     border-collapse: collapse;
-    margin-bottom: 2vh;
-  
+    margin-bottom: 16px;
+    width: 70%;
 }
 caption{
-    font-size: 5vh;
-    padding:1vh;
-    margin-bottom: 2vh;
+    font-size: 2em;
+    padding:16px;
+    margin-bottom: 16px;
 }
 .tablaTD{
     text-align: center;
-    padding: 1vh;
-    border:0.25vh solid black;
+    padding: 8px;
+    border:0.5px solid black;
   
 }
 .tablaTH{
-    padding: 1vh;
-    border:0.25vh solid black;
+    padding: 8px;
+    border:0.5px solid black;
 }
 @media(max-width:480px){
+    .tabla{
+        margin-left: 16px;
+        margin-right: 16px;
+        border-collapse: collapse;
+        margin-bottom: 16px;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    tbody{
+        width: 100%;
+    }
     .tabla tr{
         display: flex;
         flex-direction: column;
-        border: 0.25vh solid black;
+        justify-content: center;
+        border: 0.5px solid black;
+        width: 100%;
     }
     .tablaTD{
         border:none;
@@ -117,16 +148,5 @@ caption{
         text-align: start;
         font-weight: bold;
     }
-    .totalDeposit p:last-child{
-        width: 20vw;
-        font-size: 3vh;
-    }
-    .totalSpend p:last-child{
-        width: 20vw;
-        font-size: 3vh;
-    }
-    .diff p:last-child{
-        width: 20vw;
-        font-size: 3vh;
-    }
+
 }

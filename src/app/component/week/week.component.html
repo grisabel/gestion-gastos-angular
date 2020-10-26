@@ -61,13 +61,13 @@
                 <div class="saving_item">
                     <p>Beneficios</p>
                 <div class="item_con" *ngIf="(totalDeposit-totalSpend)>0" style="background-color: SeaGreen;">
-                    <p>{{totalDeposit-totalSpend}} <span matSuffix>€</span></p>    
+                    <p>{{total}} <span matSuffix>€</span></p>    
                 </div>
                 <div class="item_con" *ngIf="(totalDeposit-totalSpend)===0" style="background-color: rgb(143, 205, 247);">
-                    <p>{{totalDeposit-totalSpend}} <span matSuffix>€</span></p>    
+                    <p>{{total}} <span matSuffix>€</span></p>    
                 </div>
                 <div class="item_con" *ngIf="(totalDeposit-totalSpend)<0" style="background-color: FireBrick;">
-                    <p>{{totalDeposit-totalSpend}} <span matSuffix>€</span></p>    
+                    <p>{{total}} <span matSuffix>€</span></p>    
                 </div>
                 </div>
             </div>

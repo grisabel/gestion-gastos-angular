@@ -10,6 +10,7 @@ import {AddSpendService} from '../../services/spend/add-spend.service';
 
 
 
+
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
@@ -33,7 +34,7 @@ export class ManagementComponent implements OnInit {
   public aniadirIngreso(){
       /*this.deposit.value.deposit=Math.floor(this.deposit.value.deposit*100)/100*/
       this._ingresoServices.addDeposit(this.deposit.value).subscribe(
-        (response:any)=>{
+        (response)=>{
           this.dialog.open(DialogComponent, {
             width: '70%',
             data: {message: 'El ingreso se ha añadido correctamente', title: '' }

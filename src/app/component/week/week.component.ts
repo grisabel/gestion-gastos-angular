@@ -19,6 +19,7 @@ export class WeekComponent implements OnInit {
   public totalDeposit:number;
   public responseSpend;
   public totalSpend:number;
+  public total:number;
 
   constructor(private _fb: FormBuilder, 
               private _getDeposit: GetDepositService,
@@ -28,6 +29,7 @@ export class WeekComponent implements OnInit {
       this.responseSpend = new Array();
       this.totalDeposit = 0;
       this.totalSpend = 0;
+      this.total = 0;
     }
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class WeekComponent implements OnInit {
   }
   public submit(){
     let date = new DateModel(this.form.value.week, this.form.value.month, this.form.value.year);
+    this.total = 0;
     this._getDeposit.getDeposit(date).subscribe(
       response=>{
         this.totalDeposit = 0;
@@ -61,10 +64,14 @@ export class WeekComponent implements OnInit {
         for(let i=0;i<this.responseSpend.length;i++){
           this.totalSpend += this.responseSpend[i].spend;
           }
+          this.total = this.totalDeposit - this.totalSpend;
+          this.total= Math.floor(this.total*100)/100
       }, error=>{
         console.log(error);
       }
     );
+    
   }
+  
 
 }

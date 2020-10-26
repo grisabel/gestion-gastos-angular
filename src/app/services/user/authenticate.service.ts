@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {GLOBAL} from '../global';
+import {AuthenticateInterfaceService, Token} from './authenticate-interface.service';
+import { User } from 'src/app/models/user';
 
-export interface TokenResponse {
-  token: string
-}
+
+
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticateService {
+export class AuthenticateService implements AuthenticateInterfaceService {
   public url: string;
   private headers : HttpHeaders;
   constructor(
@@ -18,10 +19,10 @@ export class AuthenticateService {
     this.url = GLOBAL.url;
    }
 
-   authenticate(user):Observable<any>{
+   authenticate(user:User):Observable<Token>{
     this.headers = new HttpHeaders({'Content-Type':'application/json'});
    
-    return this._http.post(this.url +'authenticate', user, {headers: this.headers});
+    return this._http.post<Token>(this.url +'authenticate', user, {headers: this.headers});
   }
    
 }

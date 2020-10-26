@@ -1,25 +1,22 @@
-<header class="header"></header>
+ <body>
+   <header> <p class="title">Gestiona tus gastos</p></header>
+   <section >
+    <form [formGroup]='form' class="form" (ngSubmit)="onSubmit()">
+      <mat-form-field class="form-field" >
+       <input matInput  placeholder="Correo Electrónico" style="color: black;"  required formControlName='email'>
+      </mat-form-field>
 
-<section class="home">
-
-  <p class="title">Gestiona tus gastos</p>
-  <form [formGroup]='form' class="form" (ngSubmit)="onSubmit()">
-    <mat-form-field class="form-field" >
-      <input matInput  placeholder="Correo Electrónico" style="color: black;"  required formControlName='email'>
-    </mat-form-field>
-
-    <mat-form-field class="form-field">
-      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" required formControlName='password'>
+      <mat-form-field class="form-field">
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" required formControlName='password'>
         <mat-icon class="icon" (click)="handlerhide()" matSuffix >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> 
-    </mat-form-field>
+      </mat-form-field>
 
-    <input class="button-login" type="submit" value="Entrar"  [disabled]='form.invalid'>
-  </form>
-
-  <div class="register">
+      <input class="button-login" type="submit" value="Entrar"  [disabled]='form.invalid'>
+    </form>
+  </section>
+  <footer class="register"> 
     <p>¿No tienes una cuenta? <a [routerLink]="'/register'" >Regístrate</a></p>
-  </div>
+  </footer>
+ </body>
+ 
 
-</section>
-
-<footer class="footer"></footer>

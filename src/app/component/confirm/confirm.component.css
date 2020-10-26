@@ -1,6 +1,10 @@
 .container{
     display: flex;
     justify-content: flex-end;
+    font-size: 2em;
+}
+.message{
+    font-size: 1em;
 }
 h1{
     color: red;

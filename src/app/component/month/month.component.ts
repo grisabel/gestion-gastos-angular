@@ -18,12 +18,14 @@ export class MonthComponent implements OnInit {
   public responseDeposit;
   public totalSpend: number;
   public responseSpend;
+  public total:number;
 
   constructor(private _fb: FormBuilder,
               private _getDeposit : GetDepositMonthService,
               private _getSpend : GetSpendMonthService) { 
                 this.totalDeposit = 0;
                 this.totalSpend = 0;
+                this.total = 0;
                 this.responseDeposit = new Array();
                 this.responseSpend = new Array();
               }
@@ -52,6 +54,8 @@ export class MonthComponent implements OnInit {
        for(let i=0;i<this.responseSpend.length;i++){
         this.totalSpend += this.responseSpend[i].spend;
       }
+        this.total = this.totalDeposit - this.totalSpend;
+        this.total= Math.floor(this.total*100)/100
       }, error =>{
         console.log(error)
       }

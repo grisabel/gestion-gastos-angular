@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
              
          });
          
-         this._route.navigateByUrl('management')
+         this._route.navigateByUrl('login');
            
         
         },

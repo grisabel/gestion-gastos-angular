@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
-import {LoginService} from '../../services/user/login.service';
-import {AuthenticateService, TokenResponse} from '../../services/user/authenticate.service';
-import {GeneralService} from '../../services/general.service';
+import {AuthenticateInterfaceService, Token} from '../../services/user/authenticate-interface.service';
+import{LoginInterfaceService} from '../../services/user/login-interface.service';
 import {User} from '../../models/user';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../dialog/dialog.component';
@@ -22,9 +21,8 @@ export class LoginComponent implements OnInit {
   public hide: boolean;
 
   constructor(
-    private _loginService: LoginService,
-    private _authenticate: AuthenticateService,
-    private _generalServices: GeneralService,
+    private _loginService: LoginInterfaceService,
+    private _authenticate: AuthenticateInterfaceService,
     private _fb: FormBuilder,
     private _route: Router,
     public  dialog : MatDialog
@@ -38,44 +36,47 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.user.email = this.form.value.email;
     this.user.password = this.form.value.password;
-    //generar token en caso de que no tenga
-    if(!this._generalServices.getToken()){
-     this._authenticate.authenticate(this.user).subscribe(
-       (response:TokenResponse)=>{
-         sessionStorage.setItem('token', response.token)
-         this.user.token=response.token;
-       }, error =>{
-       });
-   }
-   this._loginService.login(this.user).subscribe( 
-     (response:any)  =>{
-       this.identity = JSON.stringify(response.userS);
-       sessionStorage.setItem('identity', this.identity)
-       this._route.navigateByUrl('management')
+    this._authenticate.authenticate(this.user).subscribe(
+      (response:Token)=>{
+          this.user.token = response.token;
+          sessionStorage.setItem('token', this.user.token);
+          this._loginService.login(this.user).subscribe( 
+            (response:any)  =>{
+              this.identity = JSON.stringify(response.userS);
+              sessionStorage.setItem('identity', this.identity)
+              this._route.navigateByUrl('management')
+            },
+            error => {
+              if(error.status === 404){
+               
+                 this.dialog.open(DialogComponent, {
+                  width: '70%',
+                  data: {message: 'El correo electrónico no está registrado', title: 'Error!' }
+                });
+              }
+              else if(error.status === 501){
+                 this.dialog.open(DialogComponent, {
+                 width: '70%',
+                 data: {message: 'El correo electrónico y la contraseña no se corresponden.', title: 'Error!' }
+               });
+              }
+              else{
+                 this.dialog.open(DialogComponent, {
+                 width: '70%',
+                 data: {message: 'Error en el servidor', title: 'Error!' }
+               });
+              }
+              
+            });
 
-     },
-     error => {
-       if(error.status === 404){
-        
-          this.dialog.open(DialogComponent, {
-           width: '70%',
-           data: {message: 'El correo electrónico no está registrado', title: 'Error!' }
-         });
-       }
-       else if(error.status === 501){
-          this.dialog.open(DialogComponent, {
+      }, error=>{
+        this.dialog.open(DialogComponent, {
           width: '70%',
-          data: {message: 'El correo electrónico y la contraseña no se corresponden.', title: 'Error!' }
+          data: {message: 'Error al comprobar el usuario', title: 'Error!' }
         });
-       }
-       else{
-          this.dialog.open(DialogComponent, {
-          width: '70%',
-          data: {message: 'Error en el servidor', title: 'Error!' }
-        });
-       }
-       
-     });
+      }
+    );
+   
  }
  public createForm(){
   this.form = this._fb.group({

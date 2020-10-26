@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {GLOBAL} from '../global';
-import {GeneralService} from '../general.service'
+import {GeneralService} from '../general.service';
+import {AddDepositInterfaceService, Deposit, Message} from './add-deposit-interface.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddDepositService {
+export class AddDepositService implements AddDepositInterfaceService {
   public url: String;
   private headers : HttpHeaders;
 
@@ -18,10 +20,10 @@ export class AddDepositService {
     this.url = GLOBAL.url;
    }
    
-   addDeposit(deposit):Observable<any>{
+   addDeposit(deposit:Deposit):Observable<Message>{
     this.headers= new HttpHeaders({'Content-type':'application/json',
     Authorization :'Basic '+this._generalServices.getToken()});
     
-    return this._http.post<any>(this.url +'AniadirIngreso', deposit, {headers: this.headers});
+    return this._http.post<Message>(this.url +'AniadirIngreso', deposit, {headers: this.headers});
     }
 }
