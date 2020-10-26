@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { GetDepositInterfaceService } from 'src/app/services/deposit/get-deposit-interface.service';
+import { GetSpendInterfaceService } from 'src/app/services/spend/get-spend-interface.service';
 
 import {DateModel} from '../../models/date';
-
-import {GetDepositService} from '../../services/deposit/get-deposit.service';
-import {GetSpendService} from '../../services/spend/get-spend.service';
 
 @Component({
   selector: 'app-week',
@@ -22,8 +21,8 @@ export class WeekComponent implements OnInit {
   public total:number;
 
   constructor(private _fb: FormBuilder, 
-              private _getDeposit: GetDepositService,
-              private _getSpend: GetSpendService)
+              private _getDeposit: GetDepositInterfaceService,
+              private _getSpend: GetSpendInterfaceService)
     { 
       this.responseDeposit = new Array();
       this.responseSpend = new Array();
@@ -52,6 +51,7 @@ export class WeekComponent implements OnInit {
         this.responseDeposit = response;
         for(let i=0;i<this.responseDeposit.length;i++){
         this.totalDeposit += this.responseDeposit[i].deposit;
+        this.totalDeposit= Math.floor(this.totalDeposit*100)/100
         }
       }, error=>{
           console.log(error);
@@ -63,6 +63,7 @@ export class WeekComponent implements OnInit {
         this.responseSpend = response;
         for(let i=0;i<this.responseSpend.length;i++){
           this.totalSpend += this.responseSpend[i].spend;
+          this.totalSpend= Math.floor(this.totalSpend*100)/100
           }
           this.total = this.totalDeposit - this.totalSpend;
           this.total= Math.floor(this.total*100)/100

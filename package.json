@@ -9,7 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cordova": "ng build --base-href . --output-path cordova/www",
-    "cordova-run": "npm run cordova && cd cordova && cordova run android"
+    "cordova-run": "npm run cordova && cd cordova && cordova run android",
+    "cordova-prod": "ng build --prod --base-href . --output-path cordova/www",
+    "cordova-run-prod": "npm run cordova-prod && cd cordova && cordova run android"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +25,7 @@
     "@angular/platform-browser": "~10.0.9",
     "@angular/platform-browser-dynamic": "~10.0.9",
     "@angular/router": "~10.0.9",
+    "moment": "^2.29.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

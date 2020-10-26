@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
-import {GetDepositMonthService} from '../../services/deposit/get-deposit-month.service';
-import {GetSpendMonthService} from '../../services/spend/get-spend-month.service';
-
 import {DateModel} from '../../models/date';
+import { GetDepositMonthInterfaceService } from 'src/app/services/deposit/get-deposit-month-interface.service';
+import { GetSpendMonthInterfaceService } from 'src/app/services/spend/get-spend-month-interface.service';
 
 @Component({
   selector: 'app-month',
@@ -21,8 +20,8 @@ export class MonthComponent implements OnInit {
   public total:number;
 
   constructor(private _fb: FormBuilder,
-              private _getDeposit : GetDepositMonthService,
-              private _getSpend : GetSpendMonthService) { 
+              private _getDeposit : GetDepositMonthInterfaceService,
+              private _getSpend : GetSpendMonthInterfaceService) { 
                 this.totalDeposit = 0;
                 this.totalSpend = 0;
                 this.total = 0;
@@ -42,6 +41,7 @@ export class MonthComponent implements OnInit {
        this.totalDeposit = 0;
        for(let i=0;i<this.responseDeposit.length;i++){
         this.totalDeposit += this.responseDeposit[i].deposit;
+        this.totalDeposit= Math.floor(this.totalDeposit*100)/100
       }
       }, error =>{
         console.log(error)
@@ -53,6 +53,7 @@ export class MonthComponent implements OnInit {
        this.totalSpend = 0;
        for(let i=0;i<this.responseSpend.length;i++){
         this.totalSpend += this.responseSpend[i].spend;
+        this.totalSpend= Math.floor(this.totalSpend*100)/100
       }
         this.total = this.totalDeposit - this.totalSpend;
         this.total= Math.floor(this.total*100)/100

@@ -5,21 +5,21 @@ import {environment} from '../../../environments/environment';
 import { GetDepositService } from './get-deposit.service';
 import{GetDepositMockService} from './get-deposit-mock.service';
 import {Observable} from 'rxjs';
+import { GeneralService } from '../general.service';
+import { Moment } from 'moment';
 
 
 export interface Deposit{
   capacity:string,
   deposit:number,
-  date: Date,
+  date: Moment,
   comment: string
 }
 
 @Injectable({
   providedIn: 'root',
-  useClass: environment.production
-    ? GetDepositService
-    : GetDepositMockService,
-  deps:[HttpClient]
+  useClass: environment.mock ? GetDepositMockService : GetDepositService,
+  deps:[HttpClient, GeneralService]
 })
 export abstract class GetDepositInterfaceService {
 

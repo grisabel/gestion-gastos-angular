@@ -9,6 +9,6 @@ export class RegisterMockService implements RegisterInterfaceService {
 
   constructor() { }
   public register(user_to_register: UserRegister): Observable<string> {
-    return of("El usuario se ha crado correctamente");
+    return of("El usuario se ha creado correctamente");
   }
 }

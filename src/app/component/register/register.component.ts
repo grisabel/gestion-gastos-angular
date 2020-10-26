@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import{ FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
-import {RegisterService} from '../../services/user/register.service';
 import {Router} from '@angular/router';
 import {DialogComponent} from '../dialog/dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import { RegisterInterfaceService } from 'src/app/services/user/register-interface.service';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private _route: Router,
     private _fb: FormBuilder,
-    private _registerService: RegisterService,
+    private _registerService: RegisterInterfaceService,
     public  dialog : MatDialog
   ) {
    this.hide = true;
@@ -69,25 +69,33 @@ export class RegisterComponent implements OnInit {
 
   handlerSend(){
  
-    this._registerService.register(this.user.value).subscribe(
-      response=>{
-         this.dialog.open(DialogComponent, {
-          width: '70%',
-          data: {message:'El usuario se ha registrado correctamente', title:""}
-             
-         });
-         
-         this._route.navigateByUrl('login');
-           
-        
-        },
-        error=>{
-            this.dialog.open(DialogComponent, {
-             width: '70%',
-             data: {message:'El email ya está registrado', title:'Error!'}
+    if(this.validatePasswords()){
+      this._registerService.register(this.user.value).subscribe(
+        response=>{
+           this.dialog.open(DialogComponent, {
+            width: '70%',
+            data: {message:'El usuario se ha registrado correctamente', title:""}
+               
            });
-          }
-        );  
+           
+           this._route.navigateByUrl('login');
+             
+          
+          },
+          error=>{
+              this.dialog.open(DialogComponent, {
+               width: '70%',
+               data: {message:'El email ya está registrado', title:'Error!'}
+             });
+            }
+          );  
+    }else{
+      this.dialog.open(DialogComponent, {
+        width: '70%',
+        data: {message:'Las contraseñas no coinciden', title:'Error!'}
+      });
+    }
+    
   }
 
   handlerPassword2(){

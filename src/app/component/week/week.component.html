@@ -88,7 +88,8 @@
                         <tr *ngFor="let deposit of this.responseDeposit">
                             <td class="tablaTD" data-campo="concepto">{{deposit.capacity}}</td>
                             <td class="tablaTD" data-campo="ingreso">{{deposit.deposit}}€</td>
-                            <td class="tablaTD" data-campo="fecha">{{deposit.date.substring(0,10)}}</td>
+                            <!-- <td class="tablaTD" data-campo="fecha">{{deposit.date.substring(0,10)}}</td> -->
+                            <td class="tablaTD" data-campo="fecha">{{deposit.date.format('l')}}</td>
                             <td class="tablaTD" data-campo="comentario">{{deposit.comment}}</td>
                         </tr>
                     </tbody>
@@ -109,7 +110,8 @@
                         <tr *ngFor="let spend of this.responseSpend">
                             <td class="tablaTD" data-campo="concepto">{{spend.capacity}}</td>
                             <td class="tablaTD" data-campo="ingreso">{{spend.spend}}€</td>
-                            <td class="tablaTD" data-campo="fecha">{{spend.date.substring(0,10)}}</td>
+                            <!-- <td class="tablaTD" data-campo="fecha">{{spend.date.substring(0,10)}}</td> -->
+                            <td class="tablaTD" data-campo="fecha">{{spend.date.format('l')}}</td>
                             <td class="tablaTD" data-campo="comentario">{{spend.comment}}</td>
                         </tr>
                     </tbody>

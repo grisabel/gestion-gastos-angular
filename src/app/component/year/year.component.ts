@@ -3,8 +3,8 @@ import {Validators,FormGroup, FormControl } from '@angular/forms';
 
 import {DateModel} from '../../models/date';
 
-import {GetSpendYearService} from '../../services/spend/get-spend-year.service';
-import {GetDepositYearService} from '../../services/deposit/get-deposit-year.service';
+import { GetDepositYearInterfaceService } from 'src/app/services/deposit/get-deposit-year-interface.service';
+import { GetSpendYearInterfaceService } from 'src/app/services/spend/get-spend-year-interface.service';
 
 @Component({
   selector: 'app-year',
@@ -20,8 +20,8 @@ export class YearComponent implements OnInit {
   public responseSpend;
   public total:number;
 
-   constructor( private _getDeposit : GetDepositYearService,
-                private _getSpend : GetSpendYearService) { 
+   constructor( private _getDeposit : GetDepositYearInterfaceService,
+                private _getSpend : GetSpendYearInterfaceService) { 
                 this.totalDeposit = 0;
                 this.totalSpend = 0;
                 this.total = 0;
@@ -42,6 +42,7 @@ export class YearComponent implements OnInit {
          this.responseDeposit= response;
          for(let i=0;i<this.responseDeposit.length;i++){
           this.totalDeposit += this.responseDeposit[i].deposit;
+          this.totalDeposit= Math.floor(this.totalDeposit*100)/100
         }
         }, error =>{
           console.log(error)
@@ -53,6 +54,7 @@ export class YearComponent implements OnInit {
          this.totalSpend=0;
          for(let i=0;i<this.responseSpend.length;i++){
           this.totalSpend += this.responseSpend[i].spend;
+          this.totalSpend= Math.floor(this.totalSpend*100)/100
         }
         this.total = this.totalDeposit - this.totalSpend;
           this.total= Math.floor(this.total*100)/100

@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { AddSpendService } from './add-spend.service';
+import {AddSpendMockService} from './add-spend-mock.service';
+import { HttpClient } from '@angular/common/http';
+import { GeneralService } from '../general.service';
 
 export interface Spend{
   capacity:string,
@@ -9,7 +14,10 @@ export interface Spend{
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
+  useClass: environment.mock ? AddSpendMockService : AddSpendService,
+  deps:[HttpClient,GeneralService]
+  
 })
 export abstract class AddSpendInterfaceService {
 

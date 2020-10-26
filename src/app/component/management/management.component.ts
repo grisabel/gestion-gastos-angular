@@ -5,8 +5,8 @@ import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../dialog/dialog.component';
 
-import {AddDepositService} from '../../services/deposit/add-deposit.service';
-import {AddSpendService} from '../../services/spend/add-spend.service';
+import { AddDepositInterfaceService } from 'src/app/services/deposit/add-deposit-interface.service';
+import { AddSpendInterfaceService } from 'src/app/services/spend/add-spend-interface.service';
 
 
 
@@ -21,8 +21,8 @@ export class ManagementComponent implements OnInit {
   public spend: FormGroup;
   constructor(
     private _fb:FormBuilder,
-    private _ingresoServices: AddDepositService,
-    private _gastoServices: AddSpendService,
+    private _ingresoServices: AddDepositInterfaceService,
+    private _gastoServices: AddSpendInterfaceService,
     private _rt: Router,
     public  dialog : MatDialog
   ) {}

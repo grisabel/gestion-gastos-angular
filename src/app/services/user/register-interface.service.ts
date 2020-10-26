@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
+import { environment } from 'src/environments/environment';
+import {RegisterMockService} from './register-mock.service';
+import{RegisterService} from './register.service';
 
 
 export interface UserRegister{
@@ -10,7 +14,10 @@ export interface UserRegister{
   password2: string
 }
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
+  useClass: environment.mock ? RegisterMockService : RegisterService,
+  deps:[HttpClient]
+  
 })
 export abstract class RegisterInterfaceService {
 
