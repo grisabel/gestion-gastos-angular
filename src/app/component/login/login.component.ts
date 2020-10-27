@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 
-import {AuthenticateInterfaceService, Token} from '../../services/user/authenticate-interface.service';
+// import {AuthenticateInterfaceService, Token} from '../../services/user/authenticate-interface.service';
 import{LoginInterfaceService} from '../../services/user/login-interface.service';
 import {User} from '../../models/user';
 import {MatDialog} from '@angular/material/dialog';
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _loginService: LoginInterfaceService,
-    private _authenticate: AuthenticateInterfaceService,
+    // private _authenticate: AuthenticateInterfaceService,
     private _fb: FormBuilder,
     private _route: Router,
     public  dialog : MatDialog

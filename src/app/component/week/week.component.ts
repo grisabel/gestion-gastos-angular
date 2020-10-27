@@ -21,6 +21,8 @@ export class WeekComponent implements OnInit {
   public responseSpend;
   public totalSpend:number;
   public total:number;
+  public momentDeposit: Array<moment.Moment>;
+  public momentSpend: Array<moment.Moment>;
 
   constructor(private _fb: FormBuilder, 
               private _getDeposit: GetDepositInterfaceService,
@@ -31,6 +33,8 @@ export class WeekComponent implements OnInit {
       this.totalDeposit = 0;
       this.totalSpend = 0;
       this.total = 0;
+      this.momentDeposit = new Array();
+      this.momentSpend = new Array();
     }
 
   ngOnInit(): void {
@@ -53,8 +57,11 @@ export class WeekComponent implements OnInit {
         this.responseDeposit = response;
         for(let i=0;i<this.responseDeposit.length;i++){
         this.totalDeposit += this.responseDeposit[i].deposit;
-        this.totalDeposit= Math.floor(this.totalDeposit*100)/100
+        this.totalDeposit= Math.floor(this.totalDeposit*100)/100;
+        this.momentDeposit[i] = moment(this.responseDeposit[i].date);
+        this.responseDeposit[i].date = this.momentDeposit[i];
         }
+        
       }, error=>{
           console.log(error);
         }
@@ -65,7 +72,9 @@ export class WeekComponent implements OnInit {
         this.responseSpend = response;
         for(let i=0;i<this.responseSpend.length;i++){
           this.totalSpend += this.responseSpend[i].spend;
-          this.totalSpend= Math.floor(this.totalSpend*100)/100
+          this.totalSpend= Math.floor(this.totalSpend*100)/100;
+          this.momentSpend[i] = moment(this.responseSpend[i].date);
+          this.responseSpend[i].date = this.momentSpend[i];
           }
           this.total = this.totalDeposit - this.totalSpend;
           this.total= Math.floor(this.total*100)/100
@@ -73,11 +82,7 @@ export class WeekComponent implements OnInit {
         console.log(error);
       }
     );
-    if(environment.production){
-      for(let i=0; 1< this.responseSpend.length;i++){
-        this.responseSpend.date[i] = moment(this.responseSpend.date[i]);
-      }
-    }
+    
   }
   
 }

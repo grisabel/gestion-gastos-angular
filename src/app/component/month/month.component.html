@@ -6,7 +6,7 @@
     <section>
         <div class="container-main">
             <form [formGroup]="form" class="form">
-                  <mat-form-field >
+                  <mat-form-field class="form-field" >
                     <mat-label>Selecciona un mes</mat-label>
                     <mat-select formControlName="month" required>
                       <mat-option value="01">Enero</mat-option>
@@ -23,7 +23,7 @@
                       <mat-option value="12">Diciembre</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <mat-form-field >
+                  <mat-form-field class="form-field" >
                     <mat-label>Selecciona un año</mat-label>
                     <mat-select formControlName="year" required>
                       <mat-option value="2020">2020</mat-option>

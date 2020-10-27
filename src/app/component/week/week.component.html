@@ -6,7 +6,7 @@
     <section>
         <div class="container-main">
             <form [formGroup]="form" class="form">
-                <mat-form-field >
+                <mat-form-field class="form-field" >
                     <mat-label>Selecciona una semana</mat-label>
                     <mat-select formControlName="week" required>
                       <mat-option value="1">Semana 1</mat-option>
@@ -15,7 +15,7 @@
                       <mat-option value="4">Semana 4</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <mat-form-field >
+                  <mat-form-field class="form-field" >
                     <mat-label>Selecciona un mes</mat-label>
                     <mat-select formControlName="month" required>
                       <mat-option value="01">Enero</mat-option>
@@ -32,7 +32,7 @@
                       <mat-option value="12">Diciembre</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <mat-form-field >
+                  <mat-form-field class="form-field">
                     <mat-label>Selecciona un año</mat-label>
                     <mat-select formControlName="year" required>
                       <mat-option value="2020">2020</mat-option>
@@ -88,7 +88,6 @@
                         <tr *ngFor="let deposit of this.responseDeposit">
                             <td class="tablaTD" data-campo="concepto">{{deposit.capacity}}</td>
                             <td class="tablaTD" data-campo="ingreso">{{deposit.deposit}}€</td>
-                            <!-- <td class="tablaTD" data-campo="fecha">{{deposit.date.substring(0,10)}}</td> -->
                             <td class="tablaTD" data-campo="fecha">{{deposit.date.format('l')}}</td>
                             <td class="tablaTD" data-campo="comentario">{{deposit.comment}}</td>
                         </tr>
@@ -110,7 +109,6 @@
                         <tr *ngFor="let spend of this.responseSpend">
                             <td class="tablaTD" data-campo="concepto">{{spend.capacity}}</td>
                             <td class="tablaTD" data-campo="ingreso">{{spend.spend}}€</td>
-                            <!-- <td class="tablaTD" data-campo="fecha">{{spend.date.substring(0,10)}}</td> -->
                             <td class="tablaTD" data-campo="fecha">{{spend.date.format('l')}}</td>
                             <td class="tablaTD" data-campo="comentario">{{spend.comment}}</td>
                         </tr>

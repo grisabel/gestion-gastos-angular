@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {GLOBAL} from '../global';
 import {GeneralService} from '../general.service';
-import {LoginInterfaceService, ResUser} from './login-interface.service';
+import {LoginInterfaceService, Token} from './login-interface.service';
 import { User } from 'src/app/models/user';
 
 @Injectable({
@@ -21,10 +21,10 @@ export class LoginService implements LoginInterfaceService{
     this.url = GLOBAL.url;
    }
 
-   login(user:User):Observable<ResUser>{
+   login(user:User):Observable<Token>{
     this.headers= new HttpHeaders({'Content-type':'application/json',
     Authorization :'Basic '+ this._generalServices.getToken()});
-    return this._http.post<ResUser>(this.url +'login', user, {headers: this.headers});
+    return this._http.post<Token>(this.url +'login', user, {headers: this.headers});
     }
    
 }

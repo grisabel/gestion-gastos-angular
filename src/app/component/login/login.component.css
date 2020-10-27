@@ -55,21 +55,29 @@ a{
     font-weight: normal; 
 }
 
-/* @media(min-width:420px){
-    
+@media(min-width:800px){
     .title{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 90%;
-        margin-top: 10vh;
-    
-    }
-    .title h1{
         font-weight: 600;
+        padding: 0.5em;
         font-style: italic;
-        font-size: 20vw; 
-        color: white;
-       
+        font-size: 6em; 
+        color:floralwhite;
+        text-align: center;
+        line-height: 100%;
+        margin: 16px;
     }
-} */
+    section{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 32px;
+    }
+    .register p{
+        color: dimgray;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
+        margin: 16px;
+        margin-bottom: 68px;
+    }
+}

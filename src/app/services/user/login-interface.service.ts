@@ -7,15 +7,8 @@ import { LoginService } from './login.service';
 import{LoginMockService} from './login-mock.service';
 import { GeneralService } from '../general.service';
 
-export interface UserS{
-  name: String,
-  surname: String,
-  email: String,
-  password: String,
-}
-export interface ResUser{
-  message:string,
-  userS:UserS
+export interface Token{
+  token:string;
 }
 @Injectable({
   providedIn: 'root',
@@ -24,5 +17,5 @@ export interface ResUser{
 })
 export abstract class LoginInterfaceService {
 
-  public abstract login(user:User):Observable<ResUser>;
+  public abstract login(user:User):Observable<Token>;
 }

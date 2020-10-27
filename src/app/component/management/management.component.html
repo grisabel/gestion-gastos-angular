@@ -31,7 +31,7 @@
         
         <h2>Añadir Ingreso</h2>
         <form [formGroup]="deposit" class="form">
-            <mat-form-field >
+            <mat-form-field  class="form-field">
                 <mat-label>Concepto</mat-label>
                 <mat-select  formControlName="capacity" required>
                     <mat-option value="Nómina">Nómina</mat-option>
@@ -41,14 +41,14 @@
                 </mat-select>
             </mat-form-field>
     
-            <mat-form-field  >
+            <mat-form-field  class="form-field" >
                 <mat-label>Ingreso</mat-label>
                 <input matInput type='number' formControlName="deposit" required>
                 <span matSuffix>€</span>         
             </mat-form-field>
     
             
-            <mat-form-field appearance="standard">
+            <mat-form-field  class="form-field" appearance="standard">
                 <mat-label>Fecha</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="date" required>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -56,7 +56,7 @@
             </mat-form-field>
          
     
-            <mat-form-field  >
+            <mat-form-field  class="form-field" >
                 <mat-label>Comentario</mat-label>
                 <textarea matInput formControlName="comment" placeholder="Lóngitud máxima:40"></textarea>
             </mat-form-field>
@@ -66,7 +66,7 @@
     
         <h2>Añadir Gasto</h2>
         <form [formGroup]="spend" class="form">
-            <mat-form-field >
+            <mat-form-field  class="form-field">
                 <mat-label>Concepto</mat-label>
                 <mat-select  formControlName="capacity" required>
                     <mat-option value="Hipoteca/Alquiler">Hipoteca/Alquiler</mat-option>
@@ -88,14 +88,14 @@
                 </mat-select>
             </mat-form-field>
     
-            <mat-form-field  >
+            <mat-form-field  class="form-field" >
                 <mat-label>Gasto</mat-label>
                 <input matInput type='number' formControlName="spend" required>
                 <span matSuffix>€</span>         
             </mat-form-field>
     
             
-            <mat-form-field appearance="standard">
+            <mat-form-field  class="form-field" appearance="standard">
                 <mat-label>Fecha</mat-label>
                 <input matInput [matDatepicker]="picker1" formControlName="date" required>
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -103,7 +103,7 @@
             </mat-form-field>
          
     
-            <mat-form-field  >
+            <mat-form-field  class="form-field" >
                 <mat-label>Comentario</mat-label>
                 <textarea matInput formControlName="comment" placeholder="Lóngitud máxima:40"></textarea>
             </mat-form-field>

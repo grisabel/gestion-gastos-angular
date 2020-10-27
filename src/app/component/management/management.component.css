@@ -50,3 +50,32 @@ h2{
 .button{
     background-color: rgb(201, 201, 201);
 }
+@media(min-width:800px){
+    .form{
+        width: 50%;
+        padding: 16px;
+        border: 1.5px solid gray;
+        border-radius: 8px;
+        background-color: ivory;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 32px;
+    }
+    h1{
+        font-size: 5em;
+        line-height: 100%;
+        background-color: rgb(173, 222, 255);
+        padding: 32px;
+        text-align: center;
+        margin-block-end:0px;
+    }
+    h2{
+        font-size: 2.5em;
+    }
+    .form-field {
+        font-size: 1.5em;
+    }
+    span{
+        font-size: 1.5em;
+    }
+}

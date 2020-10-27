@@ -24,7 +24,6 @@ section{
     margin-top: 16px;
     width: min-content;
     padding:16px;
-  
 
 }
 .container-button{
@@ -45,7 +44,6 @@ section{
     border: 2.5px solid gray;
     margin:16px;
     padding: 16px;
-    /* flex-grow: 1; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,4 +147,35 @@ caption{
         font-weight: bold;
     }
 
+}
+@media(min-width:800px){
+    h1{
+        font-size: 4.5em;
+        font-weight: 500;
+        background-color:  rgb(143, 205, 247);
+        padding: 32px;
+        text-align: center;
+        margin-block-end:0px;
+        line-height: 100%;
+    }
+    .form-field{
+        font-size: 1.5em;
+    }
+    .container-savings{
+        border: 2.5px solid gray;
+        margin:16px;
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 2em; 
+    }
+    .button{
+        background-color: rgb(201, 201, 201);
+        font-size: 1.5em;
+    }
+    .container-tables{
+        font-size: 1.5em;
+    }
 }

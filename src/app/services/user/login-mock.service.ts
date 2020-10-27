@@ -1,25 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user';
-import { LoginInterfaceService, ResUser, UserS } from './login-interface.service';
+import { LoginInterfaceService, Token } from './login-interface.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginMockService implements LoginInterfaceService {
-  public res: ResUser;
+  public token:Token;
   constructor() { 
-    this.res = <ResUser>{
-      message:'El usuario se ha logueado correctamente',
-      userS: {
-        name:"Isabel",
-        surname:"García Ruiz",
-        email:"isabel@hotmail.com",
-        password:""
-      }
+    this.token ={
+      token :'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjY0NzY4NTQ3OWU2MjJhNDA0ZTljNTMiLCJuYW1lIjoiaXNhYmVsIiwiaWF0IjoxNjAzMzYzODg3LCJleHAiOjE2MDQ1NzcwODd9.7FGhEBQQZkG_cdMSN0SR_sjOqA6cv8X4Znv1TcwFYG4'
     }
   }
-  public login(user: User): Observable<ResUser> {
-    return of(this.res);
+  public login(user: User): Observable<Token> {
+    return of(this.token);
   }
 }
