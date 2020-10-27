@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   public user: User;
   public form: FormGroup;
-  public identity: string;
   public hide: boolean;
 
   constructor(
@@ -36,48 +35,81 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.user.email = this.form.value.email;
     this.user.password = this.form.value.password;
-    this._authenticate.authenticate(this.user).subscribe(
-      (response:Token)=>{
-          this.user.token = response.token;
-          sessionStorage.setItem('token', this.user.token);
-          this._loginService.login(this.user).subscribe( 
-            (response:any)  =>{
-              this.identity = JSON.stringify(response.userS);
-              sessionStorage.setItem('identity', this.identity)
-              this._route.navigateByUrl('management')
-            },
-            error => {
-              if(error.status === 404){
-               
-                 this.dialog.open(DialogComponent, {
-                  width: '70%',
-                  data: {message: 'El correo electrónico no está registrado', title: 'Error!' }
-                });
-              }
-              else if(error.status === 501){
-                 this.dialog.open(DialogComponent, {
-                 width: '70%',
-                 data: {message: 'El correo electrónico y la contraseña no se corresponden.', title: 'Error!' }
-               });
-              }
-              else{
-                 this.dialog.open(DialogComponent, {
-                 width: '70%',
-                 data: {message: 'Error en el servidor', title: 'Error!' }
-               });
-              }
-              
-            });
 
-      }, error=>{
-        this.dialog.open(DialogComponent, {
-          width: '70%',
-          data: {message: 'Error al comprobar el usuario', title: 'Error!' }
-        });
-      }
-    );
+    this._loginService.login(this.user).subscribe( 
+      (response:any)  =>{
+        this.user.token = response.token;
+        sessionStorage.setItem('token', this.user.token);
+        this._route.navigateByUrl('management')
+      },
+      (error) => {
+        if(error.status === 404){
+           this.dialog.open(DialogComponent, {
+            width: '70%',
+            data: {message: 'El correo electrónico no está registrado', title: 'Error!' }
+          });
+        }
+        else if(error.status === 501){
+           this.dialog.open(DialogComponent, {
+           width: '70%',
+           data: {message: 'El correo electrónico y la contraseña no se corresponden.', title: 'Error!' }
+         });
+        }
+        else{
+           this.dialog.open(DialogComponent, {
+           width: '70%',
+           data: {message: 'Error en el servidor al comprobar el usuario', title: 'Error!' }
+         });
+        }
+        
+      });
    
  }
+//   onSubmit(){
+//     this.user.email = this.form.value.email;
+//     this.user.password = this.form.value.password;
+//     this._authenticate.authenticate(this.user).subscribe(
+//       (response:Token)=>{
+//           this.user.token = response.token;
+//           sessionStorage.setItem('token', this.user.token);
+//           this._loginService.login(this.user).subscribe( 
+//             (response:any)  =>{
+//               this.identity = JSON.stringify(response.userS);
+//               sessionStorage.setItem('identity', this.identity)
+//               this._route.navigateByUrl('management')
+//             },
+//             error => {
+//               if(error.status === 404){
+               
+//                  this.dialog.open(DialogComponent, {
+//                   width: '70%',
+//                   data: {message: 'El correo electrónico no está registrado', title: 'Error!' }
+//                 });
+//               }
+//               else if(error.status === 501){
+//                  this.dialog.open(DialogComponent, {
+//                  width: '70%',
+//                  data: {message: 'El correo electrónico y la contraseña no se corresponden.', title: 'Error!' }
+//                });
+//               }
+//               else{
+//                  this.dialog.open(DialogComponent, {
+//                  width: '70%',
+//                  data: {message: 'Error en el servidor', title: 'Error!' }
+//                });
+//               }
+              
+//             });
+
+//       }, error=>{
+//         this.dialog.open(DialogComponent, {
+//           width: '70%',
+//           data: {message: 'Error al comprobar el usuario', title: 'Error!' }
+//         });
+//       }
+//     );
+   
+//  }
  public createForm(){
   this.form = this._fb.group({
     email: ['', [Validators.required, Validators.email]],

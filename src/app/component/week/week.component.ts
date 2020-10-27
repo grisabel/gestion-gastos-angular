@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import * as moment from 'moment';
 import { GetDepositInterfaceService } from 'src/app/services/deposit/get-deposit-interface.service';
 import { GetSpendInterfaceService } from 'src/app/services/spend/get-spend-interface.service';
+import { environment } from 'src/environments/environment';
 
 import {DateModel} from '../../models/date';
 
@@ -71,8 +73,11 @@ export class WeekComponent implements OnInit {
         console.log(error);
       }
     );
-    
+    if(environment.production){
+      for(let i=0; 1< this.responseSpend.length;i++){
+        this.responseSpend.date[i] = moment(this.responseSpend.date[i]);
+      }
+    }
   }
   
-
 }
