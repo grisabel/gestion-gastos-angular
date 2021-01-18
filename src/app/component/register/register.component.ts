@@ -73,7 +73,6 @@ export class RegisterComponent implements OnInit {
       this._registerService.register(this.user.value).subscribe(
         response=>{
            this.dialog.open(DialogComponent, {
-            width: '70%',
             data: {message:'El usuario se ha registrado correctamente', title:""}
                
            });
@@ -84,14 +83,14 @@ export class RegisterComponent implements OnInit {
           },
           error=>{
               this.dialog.open(DialogComponent, {
-               width: '70%',
+            
                data: {message:'El email ya está registrado', title:'Error!'}
              });
             }
           );  
     }else{
       this.dialog.open(DialogComponent, {
-        width: '70%',
+    
         data: {message:'Las contraseñas no coinciden', title:'Error!'}
       });
     }

@@ -2,7 +2,7 @@
     <header>
         <h1>Informe Semanal</h1>
     </header>
-    
+
     <section>
         <div class="container-main">
             <form [formGroup]="form" class="form">
@@ -36,38 +36,39 @@
                     <mat-label>Selecciona un año</mat-label>
                     <mat-select formControlName="year" required>
                       <mat-option value="2020">2020</mat-option>
+                      <mat-option value="2021">2021</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <div class="container-button"> 
+                  <div class="container-button">
                     <button mat-button class="button" [disabled]='form.invalid' (click)='submit()'>Buscar</button>
                   </div>
-                 
+
             </form>
             <div class="container-savings">
                 <div class="saving_item">
                     <p>Ingresos</p>
                 <div class="item_con">
                     <p>{{totalDeposit}}<span matSuffix>€</span> </p>
-                   
+
                 </div>
                 </div>
                 <div class="saving_item">
                     <p>Gastos</p>
                <div class="item_con">
                     <p>{{totalSpend}} <span matSuffix>€</span> </p>
-                    
+
                </div>
                 </div>
                 <div class="saving_item">
                     <p>Beneficios</p>
                 <div class="item_con" *ngIf="(totalDeposit-totalSpend)>0" style="background-color: SeaGreen;">
-                    <p>{{total}} <span matSuffix>€</span></p>    
+                    <p>{{total}} <span matSuffix>€</span></p>
                 </div>
                 <div class="item_con" *ngIf="(totalDeposit-totalSpend)===0" style="background-color: rgb(143, 205, 247);">
-                    <p>{{total}} <span matSuffix>€</span></p>    
+                    <p>{{total}} <span matSuffix>€</span></p>
                 </div>
                 <div class="item_con" *ngIf="(totalDeposit-totalSpend)<0" style="background-color: FireBrick;">
-                    <p>{{total}} <span matSuffix>€</span></p>    
+                    <p>{{total}} <span matSuffix>€</span></p>
                 </div>
                 </div>
             </div>
@@ -92,7 +93,7 @@
                             <td class="tablaTD" data-campo="comentario">{{deposit.comment}}</td>
                         </tr>
                     </tbody>
-                </table>    
+                </table>
             </div>
             <div class="container-spend">
                 <table class="tabla" *ngIf="responseSpend.length>0">
@@ -113,7 +114,7 @@
                             <td class="tablaTD" data-campo="comentario">{{spend.comment}}</td>
                         </tr>
                     </tbody>
-                </table>    
+                </table>
             </div>
         </div>
     </section>

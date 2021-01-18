@@ -9,3 +9,15 @@
 h1{
     color: red;
 }
+@media(min-width:800px){
+    h1{
+        color: red;
+        font-size: 1.75em;
+    }
+    .message{
+        font-size: 1.25em;
+    } 
+    .container button{
+        font-size: 0.75em;
+    }
+}

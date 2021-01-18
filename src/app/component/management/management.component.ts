@@ -36,7 +36,7 @@ export class ManagementComponent implements OnInit {
       this._ingresoServices.addDeposit(this.deposit.value).subscribe(
         (response)=>{
           this.dialog.open(DialogComponent, {
-            width: '70%',
+            
             data: {message: 'El ingreso se ha añadido correctamente', title: '' }
           });
     
@@ -50,7 +50,6 @@ export class ManagementComponent implements OnInit {
      this._gastoServices.addSpend(this.spend.value).subscribe(
         (response:any)=>{
           this.dialog.open(DialogComponent, {
-            width: '70%',
             data: {message: 'El gasto se ha añadido correctamente', title: '' }
           });
          

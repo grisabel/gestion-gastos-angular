@@ -9,3 +9,12 @@ h1{
     display: flex;
     justify-content: flex-end;
 }
+@media(min-width:800px){
+    .message{
+        font-size: 1.2em;
+        
+    } 
+    .container button{
+        font-size: 1.3em;
+    }
+}
